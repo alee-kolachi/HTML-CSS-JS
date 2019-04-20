@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Task 1</title>
+    <style>
+        body {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10%;
+            padding-left: 30%;
+            font-family: sans-serif;
+            font-size: 0.8em;
+
+        }
+
+        input {
+            background-color: #34495e;
+            color: white;
+            border: 1px solid #a2a2a2;
+            padding: 10px 30px;
+            width: 38%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            outline: none;
+            font-size: 1em;
+            letter-spacing: 1px;
+
+        }
+
+        div {
+
+            font-size: 1.5em;
+            height: 100%;
+        }
+
+        #para {
+            font-size: 2vw;
+            text-align: center;
+            height: 360px;
+            width: 38%;
+            color: #34495e;
+            padding: 10px 30px 30px 30px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        button {
+            border: 1px solid #a2a2a2;
+            background-color: #34495e;
+            color: #ecf0f1;
+            outline: none;
+            font-size: 1.8vw;
+            font-family: sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 9px;
+            margin-right: 20px;
+            border-radius: 8px;
+            transition: color 0.5s;
+        }
+
+        button:hover {
+            background-color: #ecf0f1;
+            color: #34495e;
+            cursor: pointer;
+
+        }
+
+        .active {
+            background-color: #d5dee0;
+            color: #34495e;
+        }
+        .noactive{
+            background-color: #34495e;
+            color: #d5dee0;
+        }
+
+    </style>
+    <script>
+        function factorial(element) {
+            var els = document.querySelectorAll('.active');
+            var num = document.getElementById("input").value;
+            var para = document.getElementById("result");
+            ans = 1;
+            for (var x = num; x > 0; x--) {
+                ans *= x;
+            }
+            para.innerHTML = "The factorial of " + num + " is: " + ans;
+            for (var i = 0; i < els.length; i++) {
+                els[i].className = "noactive"
+            }
+            element.className = "active"
+
+        }
+
+        function prime(element) {
+            var els = document.querySelectorAll('.active');
+            var num = document.getElementById("input").value;
+            var para = document.getElementById("result");
+            var norun = 0;
+            if (num === 1) {
+                para.innerHTML = "1 is not a prime number."
+            } else if (num === 2) {
+                para.innerHTML = "2 is a prime number."
+            } else {
+                for (var x = 2; x < num; x++) {
+                    if (num % x === 0) {
+                        norun = 1;
+                        para.innerHTML = num + " is not a prime number."
+                    }
+                }
+                if (norun == 0)
+                    para.innerHTML = num + " is a prime number."
+            }
+            for (var i = 0; i < els.length; i++) {
+                els[i].className = "noactive"
+            }
+            element.className = "active"
+
+        }
+        function table(element){
+            var els = document.querySelectorAll(".active");
+            var num = document.getElementById("input").value;
+            var para = document.getElementById("result");
+            var ans = "Multiplication Table <br/><br/>";
+            for(var x = 1; x<=10; x++){
+                ans += num + " * " + x + " = " + num*x + "<br/>";
+            }
+            para.innerHTML = ans;
+            for (var i = 0; i < els.length; i++) {
+                els[i].className = "noactive"
+            }
+            element.className = "active"
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <p style="margin-left: 30px; font-size: 2em; margin-bottom: 10px;">Enter any number</p>
+        <input type="number" id="input">
+        <br />
+        <div id="para">
+            <p id="result">a</p>
+        </div>
+        <br />
+        <div>
+            <button onclick="factorial(this)">Factorial</button>
+            <button onclick="prime(this)">Prime</button>
+            <button onclick="table(this)">Table</button>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
